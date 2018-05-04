@@ -1,0 +1,5 @@
+{:system {:web/server {:env :prod
+                       :io.pedestal.http/host "localhost"
+                       :io.pedestal.http/port 1080
+                       :io.pedestal.http/join? true
+                       :io.pedestal.http/type :jetty}}}
