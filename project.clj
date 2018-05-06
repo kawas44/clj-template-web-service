@@ -12,5 +12,6 @@
   :profiles {:dev {:source-paths ["dev"]
                    :dependencies [[integrant/repl "0.3.1"]]}
              :uberjar {:aot :all}}
-  :global-vars {*warn-on-reflection* true}
-  :repl-options {:init-ns user})
+  ; :global-vars {*warn-on-reflection* true}
+  :repl-options {:init-ns user
+                 :init (set! *warn-on-reflection* true)})
