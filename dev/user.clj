@@ -1,5 +1,6 @@
 (ns user
   (:require [web-service.config :as config]
+            [web-service.utils :as utils]
             [integrant.repl :as repl :refer [go halt reset]]))
 
 (def dev-conf {:system
@@ -8,10 +9,11 @@
                               :io.pedestal.http/port 8081
                               :io.pedestal.http/join? false
                               :io.pedestal.http/type :jetty}
-                #_#_:logging {:path "log/"
-                          :level :debug}}})
+                :logging {:level :info
+                          :console true
+                          :overrides {"web-service" :debug}}}})
 
 (defn dev-system-conf
-  [] (-> (config/read!) (merge dev-conf) :system))
+  [] (-> (config/read!) (utils/deep-merge dev-conf) :system))
 
 (repl/set-prep! dev-system-conf)

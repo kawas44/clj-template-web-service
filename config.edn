@@ -2,4 +2,13 @@
                        :io.pedestal.http/host "localhost"
                        :io.pedestal.http/port 1080
                        :io.pedestal.http/join? true
-                       :io.pedestal.http/type :jetty}}}
+                       :io.pedestal.http/type :jetty}
+          :logging {:level :warn
+                    :console false
+                    :appenders [{:appender :rolling-file
+                                 :file "log/web-service.log"
+                                 :rolling-policy {:type :time-based
+                                                  :max-history 30
+                                                  :max-size 5000000 ; bytes
+                                                  :pattern ".%d{yyyy-MM-dd}.%i.gz"}
+                                 }]}}}

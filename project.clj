@@ -3,12 +3,20 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+
   :dependencies [[org.clojure/clojure "1.9.0"]
+                 ;; components
                  [integrant "0.6.3"]
+                 ;; web service
                  [io.pedestal/pedestal.service "0.5.3"]
-                 [io.pedestal/pedestal.jetty "0.5.3"]]
+                 [io.pedestal/pedestal.jetty "0.5.3"]
+                 ;; logging
+                 [spootnik/unilog "0.7.22"]
+                 [org.clojure/tools.logging "0.4.0"]]
+
   :main ^:skip-aot web-service.server
   :target-path "target/%s"
+
   :profiles {:dev {:source-paths ["dev"]
                    :dependencies [[integrant/repl "0.3.1"]]}
              :uberjar {:aot :all}}
