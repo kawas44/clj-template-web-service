@@ -1,7 +1,11 @@
 (ns web-service.components.http-server
-  (:require [integrant.core :as ig]
+  (:require [clojure.spec.alpha :as s]
+            [integrant.core :as ig]
             [web-service.web.server :as server]))
 
+
+(defmethod ig/pre-init-spec :web/server [_]
+  (s/get-spec ::server/config))
 
 (defmethod ig/init-key :web/server [_ conf]
   (let [{:io.pedestal.http/keys [host port] env :env} conf]
